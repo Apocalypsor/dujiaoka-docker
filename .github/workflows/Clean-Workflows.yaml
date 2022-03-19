@@ -1,0 +1,32 @@
+name: Clean Workflows
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '11 23 */7 * *'
+
+jobs:
+  clean:
+    name: Clean
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: 'Apocalypsor/Workflows-Cleaner'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install pipenv
+        run: python -m pip install --upgrade pipenv wheel
+      - name: Install dependencies
+        run: pipenv install
+      - name: Clean
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          EXPIRE_TIME: '1h'
+        run: pipenv run python run.py

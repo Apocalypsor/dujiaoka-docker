@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  faka:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: faka
+    volumes:
+      - ./test/env.conf:/dujiaoka/.env
+    ports:
+      - 127.0.0.1:56789:80
+    restart: always
+
+  db:
+    image: mariadb:focal
+    container_name: faka-data
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_DATABASE=dujiaoka
+      - MYSQL_USER=dujiaoka
+      - MYSQL_PASSWORD=example
+    volumes:
+      - ./test/data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    container_name: faka-redis
+    restart: always
+    volumes:
+      - ./test/redis:/data

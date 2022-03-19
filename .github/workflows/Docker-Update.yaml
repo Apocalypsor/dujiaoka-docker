@@ -1,0 +1,34 @@
+name: Update
+
+on:
+  workflow_dispatch:
+  
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/Docker-Update.yaml
+  
+  schedule:
+    - cron: 0 4 * * *
+
+jobs:
+  Update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+          fetch-depth: 0
+          submodules: true
+      - name: Update Submodules
+        run: git submodule foreach 'git fetch origin; git checkout $(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'
+      - name: Push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Dockerfile
+          skip_dirty_check: false
+          commit_user_name: Action Bot
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_author: Action <actions@github.com>
