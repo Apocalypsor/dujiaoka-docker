@@ -27,7 +27,7 @@ jobs:
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update Dockerfile
+          commit_message: 更新源
           skip_dirty_check: false
           commit_user_name: Action Bot
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
