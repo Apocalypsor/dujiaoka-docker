@@ -1,4 +1,5 @@
 FROM --platform=${BUILDPLATFORM} golang:alpine AS build
+
 WORKDIR /src
 ENV CGO_ENABLED=0
 COPY usdt/src .
@@ -7,6 +8,8 @@ ARG TARGETARCH
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o /out/epusdt .
 
 FROM alpine
+LABEL maintainer="sudo@dov.moe"
+
 WORKDIR /usdt
 COPY --from=build /out/epusdt /usdt/epusdt
 COPY --from=build /src/static /usdt/static
