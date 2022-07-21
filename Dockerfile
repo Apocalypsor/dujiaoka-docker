@@ -2,14 +2,12 @@ FROM webdevops/php-nginx:7.4-alpine
 LABEL maintainer="sudo@dov.moe"
 
 ENV INSTALL=true
-ENV MODIFY=false
 
 WORKDIR /dujiaoka
 
 COPY dujiaoka/ /dujiaoka
 COPY ./conf/default.conf /opt/docker/etc/nginx/vhost.conf
 COPY ./conf/dujiao.conf /opt/docker/etc/supervisor.d/
-COPY ./modify /dujiaoka/modify
 COPY start.sh /
 
 RUN set -xe \

@@ -7,9 +7,6 @@ if [ -f "/dujiaoka/.env" ]; then
     if [ "$INSTALL" != "true" ]; then
         echo "ok" > install.lock
     fi
-    if [ "$MODIFY" != "false" ]; then
-        mv ./modify/StripeController.php /dujiaoka/app/Http/Controllers/Pay/StripeController.php
-    fi
 
     bash /dujiaoka/start-hook.sh
 
