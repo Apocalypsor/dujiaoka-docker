@@ -2,11 +2,14 @@ version: "3"
 
 services:
   faka:
+    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile
     container_name: faka
     volumes:
+      - ./test/uploads:/dujiaoka/public/uploads
+      - ./test/storage:/dujiaoka/storage
       - ./test/env.conf:/dujiaoka/.env
     ports:
       - 127.0.0.1:56789:80
