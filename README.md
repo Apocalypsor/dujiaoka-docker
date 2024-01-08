@@ -2,7 +2,9 @@
 
 ## 简介
 
-本项目提供了一个用于自动化售货的开源系统——独角数卡的搭建教程，使用Docker进行部署。本教程致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
+本项目提供了一个用于自动化售货的开源系统——[独角数卡](https://github.com/assimon/dujiaoka)基于Docker的一键部署。本项目致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
+
+For the English guide, please refer to [README.EN.md](https://github.com/Apocalypsor/SmartDNS-GFWList/blob/master/README.EN.md).
 
 > 更详细的教程：[如何优雅地搭建自己的发卡站](https://blog.dov.moe/posts/49102/)
 
@@ -35,7 +37,6 @@ services:
     environment:
         # - INSTALL=false
         - INSTALL=true
-        # - MODIFY=true
     volumes:
       - ./env.conf:/dujiaoka/.env
       - ./uploads:/dujiaoka/public/uploads
