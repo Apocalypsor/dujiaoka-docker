@@ -4,6 +4,8 @@
 
 This project provides a Docker image for deploying an open-source automated vending system, [Dujiaoka](https://github.com/assimon/dujiaoka). This project aims to offer an efficient, stable, and rapid solution.
 
+**This image supports both AMD64 and ARM64 architectures.**
+
 ## Usage Instructions
 
 ### Docker Installation

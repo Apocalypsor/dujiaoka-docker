@@ -4,6 +4,8 @@
 
 本项目提供了一个用于自动化售货的开源系统——[独角数卡](https://github.com/assimon/dujiaoka)基于Docker的一键部署。本项目致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
 
+**本镜像已支持AMD64/ARM64。**
+
 For the English guide, please refer to [README.EN.md](https://github.com/Apocalypsor/dujiaoka-docker/blob/main/README.EN.md).
 
 > 更详细的教程：[如何优雅地搭建自己的发卡站](https://blog.dov.moe/posts/49102/)
@@ -32,7 +34,10 @@ version: "3"
 services:
   faka:
     image: ghcr.io/apocalypsor/dujiaoka:latest
-    # 国内服务器可以用 hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
+    # ARM64架构可以用 ghcr.io/apocalypsor/dujiaoka:arm
+    # 国内服务器可以用
+    #   - hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
+    #   - hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:arm
     container_name: faka
     environment:
         # - INSTALL=false

@@ -2,7 +2,6 @@ version: "3"
 
 services:
   faka:
-    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile
