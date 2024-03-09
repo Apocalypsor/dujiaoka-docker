@@ -17,7 +17,8 @@ COPY conf/default.conf /etc/nginx/conf.d/default.conf
 COPY conf/fpm-pool.conf /etc/php7/php-fpm.d/www.conf
 COPY conf/php.ini /etc/php7/conf.d/custom.ini
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY start.sh /
+COPY conf/start.sh /
+COPY conf/start-hook.sh /dujiaoka/start-hook.sh
 
 # Install composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -33,7 +34,7 @@ RUN set -xe \
 # Set permissions
 RUN chown -R application /dujiaoka \
     && chmod -R 0755 /dujiaoka/ \
-    && chmod +x /start.sh
+    && chmod +x /start.sh /dujiaoka/start-hook.sh
 
 ENV INSTALL=true
 

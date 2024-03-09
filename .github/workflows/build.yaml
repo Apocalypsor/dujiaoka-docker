@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ./docker/Dockerfile
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
@@ -43,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile.Epusdt
+          file: ./docker/Dockerfile.Epusdt
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |

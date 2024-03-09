@@ -4,7 +4,7 @@ services:
   faka:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/Dockerfile
     container_name: faka
     volumes:
       - ./test/uploads:/dujiaoka/public/uploads

@@ -25,11 +25,10 @@ if [ -f "/dujiaoka/.env" ]; then
         sed -i "s/INSERT INTO \`pays\` VALUES (28,'USDC-Polygon', 'tokenpay-usdc-polygon'/INSERT INTO \`pays\` VALUES (34,'USDC-Polygon', 'tokenpay-usdc-polygon'/" /dujiaoka/database/sql/install.sql
     fi
 
-    # Run setup hooks
-    if [ -d "/dujiaoka/start-hook.sh" ]; then
-        chmod +x /dujiaoka/start-hook.sh
-        /dujiaoka/start-hook.sh
-    fi
+    # Run start hooks
+    echo "Running start hooks..."
+    /dujiaoka/start-hook.sh
+    echo "Start hooks completed."
 
     php artisan clear-compiled
 
