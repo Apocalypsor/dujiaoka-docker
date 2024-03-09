@@ -33,11 +33,10 @@ version: "3"
 
 services:
   faka:
+    # 支持AMD64/ARM64
     image: ghcr.io/apocalypsor/dujiaoka:latest
-    # ARM64架构可以用 ghcr.io/apocalypsor/dujiaoka:arm
     # 国内服务器可以用
     #   - hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
-    #   - hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:arm
     container_name: faka
     environment:
         # - INSTALL=false
@@ -149,6 +148,7 @@ ADMIN_ROUTE_PREFIX=/admin
 
 ```yaml
   usdt:
+    # 支持AMD64/ARM64
     image: ghcr.io/apocalypsor/dujiaoka:usdt
     # 国内服务器可以用 hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:usdt
     container_name: faka-usdt
