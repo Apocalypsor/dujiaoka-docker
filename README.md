@@ -206,4 +206,4 @@ docker-compose down && docker-compose up -d
 ```
 
 # TODO
-- [ ] 支持 arm 等其他架构
+- [x] 支持 arm 等其他架构
