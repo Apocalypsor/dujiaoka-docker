@@ -29,6 +29,8 @@ jobs:
           registry: hkccr.ccs.tencentyun.com
           username: ${{ secrets.TENCENT_DOCKER_USERNAME }}
           password: ${{ secrets.TENCENT_DOCKER_TOKEN }}
+      - name: Copy TokenPay
+        run: cp -r tokenpay/Plugs/dujiaoka dujiaoka
       - name: Build dujiaoka
         uses: docker/build-push-action@v5
         with:
