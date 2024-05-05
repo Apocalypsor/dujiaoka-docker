@@ -4,7 +4,7 @@
 
 本项目提供了一个用于自动化售货的开源系统——[独角数卡](https://github.com/assimon/dujiaoka)基于Docker的一键部署。本项目致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
 
-**本镜像已支持AMD64/ARM64。**
+**本镜像已全面支持AMD64/ARM64。**
 
 For the English guide, please refer to [README.EN.md](https://github.com/Apocalypsor/dujiaoka-docker/blob/main/README.EN.md).
 
@@ -33,10 +33,8 @@ version: "3"
 
 services:
   faka:
-    # 支持AMD64/ARM64
     image: ghcr.io/apocalypsor/dujiaoka:latest
-    # 国内服务器可以用
-    #   - hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
+    # 国内服务器可以用: hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
     container_name: faka
     environment:
         # - INSTALL=false
@@ -144,11 +142,10 @@ ADMIN_ROUTE_PREFIX=/admin
 
 ### Epusdt
 
-[Epusdt](https://github.com/assimon/epusdt) (Easy Payment Usdt) 是独角数卡官方的开源USDT支付中间件(TRC20网络)，如果要添加USDT收款，需要在`docker-compose.yaml`中添加以下项：
+[Epusdt](https://github.com/assimon/epusdt) (Easy Payment Usdt) 是独角数卡官方的开源USDT支付中间件(TRC20网络)，如果要添加Epusdt收款，需要在`docker-compose.yaml`中添加以下项：
 
 ```yaml
   usdt:
-    # 支持AMD64/ARM64
     image: ghcr.io/apocalypsor/dujiaoka:usdt
     # 国内服务器可以用 hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:usdt
     container_name: faka-usdt
@@ -165,13 +162,44 @@ ADMIN_ROUTE_PREFIX=/admin
 
 > Epusdt的搭建可以参考下[这篇博客](https://www.ioiox.com/archives/167.html)，同样是用的本镜像。
 
-#### 启动服务
+### TokenPay
+
+[TokenPay](https://github.com/LightCountry/TokenPay) 是一款同时支持动态和静态收款地址收取TRX、USDT-TRC20、ETH系列区块链所有代币的支付解决方案，非常好用，如果要添加TokenPay收款，需要在`docker-compose.yaml`中添加以下项：
+
+```yaml
+  faka-tokenpay:
+    image: ghcr.io/apocalypsor/dujiaoka:tokenpay
+    container_name: faka-tokenpay
+    restart: always
+    volumes:
+      - ./tokenpay/TokenPay.db:/app/TokenPay.db
+      - ./tokenpay/appsettings.json:/app/appsettings.json
+      # - ./tokenpay/EVMChains.json:/app/EVMChains.json
+    ports:
+      - 127.0.0.1:52939:80
+```
+
+数据库文件要提前创建好：
+```bash
+mkdir tokenpay
+touch ./tokenpay/TokenPay.db
+touch ./tokenpay/appsettings.json
+```
+
+同时要在目录下提前编辑好`tokenpay/appsettings.json`配置文件，参考[文档](https://github.com/LightCountry/TokenPay/blob/master/Wiki/appsettings.md)。
+
+其中`52939`端口也最好反代，建议TokenPay用单独的域名。
+
+### 启动服务
 
 ```bash
 docker-compose up -d
 ```
 
-#### 反代配置
+### 反代配置
+
+**务必添加sub_filter的两行，否则Https下会出现混合内容问题。**
+
 
 ```nginx
 #PROXY-START/
