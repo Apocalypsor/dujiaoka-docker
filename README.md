@@ -6,8 +6,6 @@
 
 **本镜像已全面支持AMD64/ARM64。**
 
-For the English guide, please refer to [README.EN.md](https://github.com/Apocalypsor/dujiaoka-docker/blob/main/README.EN.md).
-
 > 更详细的教程：[如何优雅地搭建自己的发卡站](https://blog.dov.moe/posts/49102/)
 
 ## 使用说明
