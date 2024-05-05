@@ -231,5 +231,7 @@ location ^~ /
 docker-compose down && docker-compose up -d
 ```
 
+独角数卡添加TokenPay要自行添加路由，可以参考[文档1](https://github.com/LightCountry/TokenPay/tree/master/Plugs/dujiaoka)和[文档2](https://github.com/LightCountry/TokenPay/tree/master/Plugs/dujiaoka%20-%20%E6%89%AB%E7%A0%81%E7%89%88%E6%9C%AC)。
+
 # TODO
 - [x] 支持 arm 等其他架构
