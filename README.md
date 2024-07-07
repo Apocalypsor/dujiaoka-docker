@@ -64,6 +64,7 @@ services:
     volumes:
       - ./redis:/data
 ```
+**注意：首次启动务必设置`INSTALL=true`，完成网页端安装后再将其改为`false`！**
 
 请自行将形如`<foobar>`的变量替换为自己的信息，以下的替换要与`docker-compose.yaml`文件中相同。
 
