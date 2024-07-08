@@ -42,7 +42,7 @@ services:
       - ./uploads:/dujiaoka/public/uploads
       - ./storage:/dujiaoka/storage
     ports:
-      - 127.0.0.1:56789:80
+      - 56789:80
     restart: always
  
   db:
@@ -152,7 +152,7 @@ ADMIN_ROUTE_PREFIX=/admin
     volumes:
       - ./usdt.conf:/usdt/.env
     ports:
-      - 127.0.0.1:51293:8000
+      - 51293:8000
 ```
 
 同时要在目录下提前编辑好`usdt.conf`配置文件，参考[文档](https://github.com/assimon/epusdt/blob/master/wiki/manual_RUN.md)和[参考配置](https://github.com/assimon/epusdt/blob/master/src/.env.example)。
@@ -175,7 +175,7 @@ ADMIN_ROUTE_PREFIX=/admin
       - ./tokenpay/appsettings.json:/app/appsettings.json
       # - ./tokenpay/EVMChains.json:/app/EVMChains.json
     ports:
-      - 127.0.0.1:52939:80
+      - 52939:80
 ```
 
 数据库文件要提前创建好：
