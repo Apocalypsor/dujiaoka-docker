@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/Docker-Update.yaml
+      - .github/workflows/update.yaml
   
   schedule:
     - cron: 0 4 * * *
