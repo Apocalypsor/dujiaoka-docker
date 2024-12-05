@@ -32,7 +32,7 @@ jobs:
       - name: Copy TokenPay
         run: cp -r tokenpay/Plugs/dujiaoka dujiaoka
       - name: Build dujiaoka
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./docker/Dockerfile
@@ -42,7 +42,7 @@ jobs:
             ghcr.io/apocalypsor/dujiaoka:latest
             hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:latest
       - name: Build Epusdt
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./docker/Dockerfile.Epusdt
@@ -52,7 +52,7 @@ jobs:
             ghcr.io/apocalypsor/dujiaoka:usdt
             hkccr.ccs.tencentyun.com/apocalypsor/dujiaoka:usdt
       - name: Build TokenPay
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./tokenpay/src
           file: ./tokenpay/src/Dockerfile
