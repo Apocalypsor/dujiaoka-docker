@@ -1,5 +1,9 @@
 # 独角数卡(发卡) Docker 一键部署
 
+**Dujiao-Next已发布，官方提供Docker镜像，本项目不再更新**
+
+https://dujiaoka.com/
+
 ## 简介
 
 本项目提供了一个用于自动化售货的开源系统——[独角数卡](https://github.com/assimon/dujiaoka)基于Docker的一键部署。本项目致力于提供一个高效、稳定且快速的解决方案，帮助用户轻松搭建自己的发卡站。
